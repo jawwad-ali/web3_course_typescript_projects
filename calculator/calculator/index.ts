@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 import inquirer from "inquirer"; 
-import chalk from "chalk";
+import chalk from "chalk"; 
 import chalkAnimation from "chalk-animation"
 
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms))
