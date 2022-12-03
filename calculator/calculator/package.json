@@ -1,23 +1,24 @@
 {
   "name": "aj-calc-web3-project",
-  "version": "1.0.0",
-  "description": "", 
+  "version": "2.0.0",
+  "description": "",
   "main": "index.js",
-  "type": "module", 
-  "bin": "./index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }, 
+  },
   "author": "",
-  "license": "ISC", 
+  "license": "ISC",
+  "bin": "./index.js",
   "devDependencies": {
     "@types/chalk-animation": "^1.6.1",
     "@types/inquirer": "^9.0.3",
     "@types/node": "^18.11.9"
   },
-  "dependencies": { 
+  "dependencies": {
+    "aj-calc-web3-project": "^1.0.0",
     "chalk": "^5.1.2",
     "chalk-animation": "^2.0.3",
-    "inquirer": "^9.1.4"
+    "inquirer": "^9.1.4" 
   }
 }
