@@ -1,5 +1,5 @@
 {
-  "name": "number_guessing_game",
+  "name": "aj-ngn",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bin": "./index.js",
   "dependencies": {
+    "aj-ngn": "^1.0.0",
     "chalk": "^5.1.2",
     "chalk-animation": "^2.0.3",
     "inquirer": "^9.1.4"
