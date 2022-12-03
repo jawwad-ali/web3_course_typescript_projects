@@ -4,12 +4,10 @@
   "description": "", 
   "main": "index.js",
   "type": "module", 
-  "bin": {
-    "aj-calculator": "./index.js" 
-  }, 
+  "bin": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  }, 
   "author": "",
   "license": "ISC", 
   "devDependencies": {
