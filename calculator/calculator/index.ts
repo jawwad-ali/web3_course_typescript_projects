@@ -1,4 +1,5 @@
-import inquirer from "inquirer";
+#! /usr/bin/env node
+import inquirer from "inquirer"; 
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation"
 
