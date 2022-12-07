@@ -32,8 +32,28 @@ async function TodoProgram() {
                 message: "Add New todo"
             },
         ])
+
         todos.push(newTodo.addTodo)
-        console.log(chalk.green(todos.join(", ")))
+        console.log("Your items:", chalk.green(todos.join(", ")))
+    }
+
+    else if (operation.operator == "DeleteTodo") {
+        console.log(todos)
+        const removeTodo = await inquirer.prompt([
+            {
+                name: "deleteTodo",
+                type: "input",
+                message: "Enter the item you want to delete"
+            },
+        ])
+
+        const index = todos.indexOf(removeTodo.deleteTodo)
+        // console.log("check here", index)
+
+        if (index > -1) {
+            todos.splice(index, 1);
+        }
+
     }
 }
 
@@ -44,7 +64,7 @@ async function startAgain() {
             {
                 name: "restart",
                 type: "input",
-                message: "Do you want to add more items? Press y or n"
+                message: "Do you want to add/delete more items? Press y or n"
             }
         ])
     }

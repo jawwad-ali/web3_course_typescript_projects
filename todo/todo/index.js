@@ -1,6 +1,20 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
+// var todos = [
+//     {
+//         id: Math.random() * 1,
+//         name: "breakfast",
+//     },
+//     {
+//         id: Math.random() * 1,
+//         name: "exercise",
+//     },
+//     {
+//         id: Math.random() * 1,
+//         name: "coding",
+//     }
+// ]
 let todos = ["breakfast", "exercise", "coding"];
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 async function Welcome() {
@@ -27,7 +41,22 @@ async function TodoProgram() {
             },
         ]);
         todos.push(newTodo.addTodo);
-        console.log(chalk.green(todos.join(", ")));
+        console.log("Your items:", chalk.green(todos.join(", ")));
+    }
+    else if (operation.operator == "DeleteTodo") {
+        console.log(todos);
+        const removeTodo = await inquirer.prompt([
+            {
+                name: "deleteTodo",
+                type: "input",
+                message: "Enter the item you want to delete"
+            },
+        ]);
+        const index = todos.indexOf(removeTodo.deleteTodo);
+        // console.log("check here", index)
+        if (index > -1) {
+            todos.splice(index, 1);
+        }
     }
 }
 async function startAgain() {
