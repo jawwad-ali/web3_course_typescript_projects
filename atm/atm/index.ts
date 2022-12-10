@@ -5,7 +5,7 @@ import chalkAnimation from "chalk-animation"
 
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms))
 
-const email = "demo@gmail.com" 
+const email = "demo@gmail.com"
 const password = "demo123@"
 console.log(`Enter ${email} from email, and ${password} for password`)
 
