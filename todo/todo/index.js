@@ -14,7 +14,7 @@ async function TodoProgram() {
         {
             name: "operator",
             type: "list",
-            message: "Select which option you want to Perform. \n",
+            message: "Select Operation. \n",
             choices: ["AddTodo", "DeleteTodo"]
         }
     ]);
