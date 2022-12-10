@@ -1,20 +1,6 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
-// var todos = [
-//     {
-//         id: Math.random() * 1,
-//         name: "breakfast",
-//     },
-//     {
-//         id: Math.random() * 1,
-//         name: "exercise",
-//     },
-//     {
-//         id: Math.random() * 1,
-//         name: "coding",
-//     }
-// ]
 let todos = ["breakfast", "exercise", "coding"];
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 async function Welcome() {
@@ -57,6 +43,7 @@ async function TodoProgram() {
         if (index > -1) {
             todos.splice(index, 1);
         }
+        console.log(`${chalk.red(removeTodo.deleteTodo)} has been removed from you list`);
     }
 }
 async function startAgain() {
@@ -66,9 +53,10 @@ async function startAgain() {
             {
                 name: "restart",
                 type: "input",
-                message: "Do you want to add more items? Press y or n"
+                message: "Do you want to add/delete more items? Press y or n"
             }
         ]);
     } while (again.restart == "y" || again.restart == "Y" || again.restart == "yes" || again.restart == "YES");
+    console.log("Your latest modified list: ", todos.join(", "));
 }
 await startAgain();

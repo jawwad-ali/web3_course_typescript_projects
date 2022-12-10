@@ -19,7 +19,7 @@ async function TodoProgram() {
         {
             name: "operator",
             type: "list",
-            message: "Select which option you want to Perform. \n",
+            message: "Select Operation. \n",
             choices: ["AddTodo", "DeleteTodo"]
         }
     ])
@@ -53,7 +53,7 @@ async function TodoProgram() {
         if (index > -1) {
             todos.splice(index, 1);
         }
-
+        console.log(`${chalk.red(removeTodo.deleteTodo)} has been removed from you list`)
     }
 }
 
@@ -71,6 +71,7 @@ async function startAgain() {
     while (
         again.restart == "y" || again.restart == "Y" || again.restart == "yes" || again.restart == "YES"
     )
+    console.log("Your latest modified list: ", todos.join(", "))
 }
 
 await startAgain()  
