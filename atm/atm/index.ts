@@ -5,9 +5,9 @@ import chalkAnimation from "chalk-animation"
 
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms))
 
-const email = "demo@gmail.com"
-const password = "demo123@"
-console.log(`Enter ${email} from email, and ${password} for password`)
+// const email = "demo@gmail.com"
+// const password = "demo123@"
+console.log(`Enter demo@gmail.com from email, and demo123@ for password`)
 
 var InitialBalance = 5000
 
@@ -25,25 +25,25 @@ async function Login() {
         {
             name: "email",
             type: "string",
-            message: "Enter Email.",
+            message: "Enter Email. \n",
         }
     ])
     const password = await inquirer.prompt([
         {
             name: "password",
             type: "password",
-            message: "Enter Password.",
+            message: "Enter Password. \n",
         }
     ])
 
-    if (email.email === "demo@gmail.com" && password.password === "demo123@") {
-        await ATM()
-    }
-    else {
+    if (email.email !== "demo@gmail.com" && password.password !== "demo123@") {
         console.log("invalid credentials")
     }
+    else {
+        await ATM()
+    }
 }
-await Login()
+Login()
 
 async function ATM() {
     const operation = await inquirer.prompt([
@@ -55,6 +55,7 @@ async function ATM() {
         }
     ])
 
+    // Withdrawal
     if (operation.operator == "Withdrawal") {
         const action = await inquirer.prompt([
             {
@@ -77,6 +78,7 @@ async function ATM() {
         }
     }
 
+    // Deposit
     else if (operation.operator == "Deposit") {
         const action = await inquirer.prompt([
             {
@@ -130,22 +132,3 @@ async function ATM() {
         }
     }
 }
-
-// await ATM()
-async function startAgain() {
-    do {
-        await ATM()
-        var again = await inquirer.prompt([
-            {
-                name: "restart",
-                type: "input",
-                message: "Do you want to Perform actions again? Press y or n"
-            }
-        ])
-    }
-    while (
-        again.restart == "y" || again.restart == "Y" || again.restart == "yes" || again.restart == "YES"
-    )
-}
-
-await startAgain()  

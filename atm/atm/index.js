@@ -3,9 +3,9 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
-const email = "demo@gmail.com";
-const password = "demo123@";
-console.log(`Enter ${email} from email, and ${password} for password`);
+// const email = "demo@gmail.com"
+// const password = "demo123@"
+console.log(`Enter demo@gmail.com from email, and demo123@ for password`);
 var InitialBalance = 5000;
 async function Welcome() {
     let rainbowTitle = chalkAnimation.rainbow("Command Line ATM application using Typescript and Node.js");
@@ -13,30 +13,29 @@ async function Welcome() {
     rainbowTitle.stop();
 }
 await Welcome();
-// async function Login() {
-//     const email = await inquirer.prompt([
-//         { 
-//             name: "email",
-//             type: "string",
-//             message: "Enter Email.",
-//         }
-//     ])
-//     const password = await inquirer.prompt([
-//         {
-//             name: "password",
-//             type: "password",
-//             message: "Enter Password.",
-//         }
-//     ])
-//     if (email.email === "demo@gmail.com" && password.password === "demo123@") {
-//         await ATM()
-//     }
-//     else {
-//         console.log("invalid credentials")
-//     }
-// }
-// await Login()
-
+async function Login() {
+    const email = await inquirer.prompt([
+        {
+            name: "email",
+            type: "string",
+            message: "Enter Email. \n",
+        }
+    ]);
+    const password = await inquirer.prompt([
+        {
+            name: "password",
+            type: "password",
+            message: "Enter Password. \n",
+        }
+    ]);
+    if (email.email !== "demo@gmail.com" && password.password !== "demo123@") {
+        console.log("invalid credentials");
+    }
+    else {
+        await ATM();
+    }
+}
+Login();
 async function ATM() {
     const operation = await inquirer.prompt([
         {
@@ -46,6 +45,7 @@ async function ATM() {
             choices: ["Withdrawal", "Deposit", "Transfer"]
         }
     ]);
+    // Withdrawal
     if (operation.operator == "Withdrawal") {
         const action = await inquirer.prompt([
             {
@@ -60,12 +60,12 @@ async function ATM() {
         else {
             var afterOperation = InitialBalance -= action.withdrawal;
             console.log("Your current balance after Withdrawal is: ", afterOperation);
-            // Updating the initial balance after deposit
+            // Updating the initial balance after withdrawal
             afterOperation = -InitialBalance;
-            // InitialBalance = - afterOperation
             console.log("after withdrawal", InitialBalance);
         }
     }
+    // Deposit
     else if (operation.operator == "Deposit") {
         const action = await inquirer.prompt([
             {
@@ -112,17 +112,3 @@ async function ATM() {
         }
     }
 }
-// await ATM()
-async function startAgain() {
-    do {
-        await ATM();
-        var again = await inquirer.prompt([
-            {
-                name: "restart",
-                type: "input",
-                message: "Do you want to Perform actions again? Press y or n"
-            }
-        ]);
-    } while (again.restart == "y" || again.restart == "Y" || again.restart == "yes" || again.restart == "YES");
-}
-await startAgain();
