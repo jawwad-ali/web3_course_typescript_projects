@@ -32,7 +32,7 @@ async function Login() {
         console.log("invalid credentials");
     }
     else {
-        await ATM();
+        await startAgain();
     }
 }
 Login();
@@ -112,3 +112,16 @@ async function ATM() {
         }
     }
 }
+async function startAgain() {
+    do {
+        await ATM();
+        var again = await inquirer.prompt([
+            {
+                name: "restart",
+                type: "input",
+                message: "Do you want to calculate more? Press y or n"
+            }
+        ]);
+    } while (again.restart == "y" || again.restart == "Y" || again.restart == "yes" || again.restart == "YES");
+}
+// await startAgain()  
